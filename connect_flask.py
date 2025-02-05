@@ -30,7 +30,8 @@ def run_command():
 
     llm =  Llm()
     llm_response = llm.response(prompt)
-    print(f"flask response {llm_response}")
+    a = jsonify({"output" : llm_response})
+    print(f"flask response {a}")
     return jsonify({"output" : llm_response})
 
 if __name__ == "__main__":
