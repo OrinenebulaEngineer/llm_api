@@ -28,6 +28,15 @@ def main():
                     print("Exiting the program")
                     break
                 response = send_request(user_input)
+
+                # Check if the response is a valid response object
+                if isinstance(response, requests.Response):
+                    # Print the JSON content of the response
+                    print(response.json())  # This will print the JSON response
+                else:
+                    print(response)  # Print error message if not a valid response
+
+
                 print(response)
             except KeyboardInterrupt:
                 print("\nExiting the program.")
