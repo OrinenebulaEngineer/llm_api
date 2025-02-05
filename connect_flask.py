@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import paramiko
-
+from ollama import chat
+from ollama import ChatResponse
 app = Flask(__name__)
 
 def connect_to_server(server_ip , username, password, command):
@@ -24,7 +25,15 @@ def connect_to_server(server_ip , username, password, command):
 
 @app.route('/run_command', methods=['POST'])
 def run_command():
-    # data = request.json
+
+    data = request.json
+    prompt = data.get("prompt")
+
+    message = [
+        {"role" : "system" , "content" : "you are helpful assistance provide good answer based on  prompt language"},
+        {"role" : "user",  "content" : prompt}
+    ]
+
     # server_ip = data.get("server_ip")
     # username = data.get("username")
     # password = data.get("password")
@@ -41,7 +50,11 @@ def run_command():
     # if error:
     #     return jsonify({"error" : error}), 500
 
-    output = "helloworld"
+    response : ChatResponse = chat(
+        model = 'qwen:32b',
+        messages= message)
+    
+    output = response.message.content
     
     return jsonify({"output" : output})
 
