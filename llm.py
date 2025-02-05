@@ -18,5 +18,6 @@ class Llm:
                 messages= message)
             
         output = response.message.content
+        print(output)
 
         return output

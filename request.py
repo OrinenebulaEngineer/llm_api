@@ -14,7 +14,7 @@ def send_request(prompt):
 
     #check if the response was successful
     if response.status_code ==200:
-        return response.json
+        return response
     else:
         return {"error": f"Request failed with status code {response.status_code}"}
     
