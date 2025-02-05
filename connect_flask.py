@@ -24,22 +24,24 @@ def connect_to_server(server_ip , username, password, command):
 
 @app.route('/run_command', methods=['POST'])
 def run_command():
-    data = request.json
-    server_ip = data.get("server_ip")
-    username = data.get("username")
-    password = data.get("password")
-    command  = data.get("command")
+    # data = request.json
+    # server_ip = data.get("server_ip")
+    # username = data.get("username")
+    # password = data.get("password")
+    # command  = data.get("command")
 
-    #Check for missing required data
-    if not server_ip or not username or not password:
-        return jsonify({
-            "error" : "Pleas provide remot_ip, username, password"
-        }), 400
-    output, error = connect_to_server(server_ip,username,password,command)
-    # output, error = connect_to_server(command=command)
+    # #Check for missing required data
+    # if not server_ip or not username or not password:
+    #     return jsonify({
+    #         "error" : "Pleas provide remot_ip, username, password"
+    #     }), 400
+    # output, error = connect_to_server(server_ip,username,password,command)
+    # # output, error = connect_to_server(command=command)
 
-    if error:
-        return jsonify({"error" : error}), 500
+    # if error:
+    #     return jsonify({"error" : error}), 500
+
+    output = "helloworld"
     
     return jsonify({"output" : output})
 
@@ -47,5 +49,3 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port =5000)
     
 
-
-    
