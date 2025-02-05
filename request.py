@@ -10,7 +10,7 @@ def send_request(prompt):
     url = "http://172.20.253.8:5000/run_command"
     payload = {"prompt":prompt}
 
-    response = requests.post(url, json=payload, auth=HTTPBasicAuth('mhbokaei', 'bokaei@37'))
+    response = requests.post(url, json=payload, auth=HTTPBasicAuth('<your_username>', "<your_password>"))
 
     #check if the response was successful
     if response.status_code ==200:
