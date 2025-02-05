@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import paramiko
-from ollama import chat
-from ollama import ChatResponse
+from llm import  Llm
 app = Flask(__name__)
 
 def connect_to_server(server_ip , username, password, command):
@@ -29,34 +28,9 @@ def run_command():
     data = request.json
     prompt = data.get("prompt")
 
-    message = [
-        {"role" : "system" , "content" : "you are helpful assistance provide good answer based on  prompt language"},
-        {"role" : "user",  "content" : prompt}
-    ]
-
-    # server_ip = data.get("server_ip")
-    # username = data.get("username")
-    # password = data.get("password")
-    # command  = data.get("command")
-
-    # #Check for missing required data
-    # if not server_ip or not username or not password:
-    #     return jsonify({
-    #         "error" : "Pleas provide remot_ip, username, password"
-    #     }), 400
-    # output, error = connect_to_server(server_ip,username,password,command)
-    # # output, error = connect_to_server(command=command)
-
-    # if error:
-    #     return jsonify({"error" : error}), 500
-
-    response : ChatResponse = chat(
-        model = 'qwen:32b',
-        messages= message)
-    
-    output = response.message.content
-    
-    return jsonify({"output" : output})
+    llm =  Llm()
+    llm_response = llm.response(prompt)
+    return jsonify({"output" : llm_response})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port =5000)
