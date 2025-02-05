@@ -31,7 +31,7 @@ def run_command():
     command  = data.get("command")
 
     #Check for missing required data
-    if not server_ip r not username or not password:
+    if not server_ip or not username or not password:
         return jsonify({
             "error" : "Pleas provide remot_ip, username, password"
         }), 400
@@ -40,7 +40,7 @@ def run_command():
     if error:
         return jsonify({"error" : error}), 500
     
-    return jsonify("output" : output)
+    return jsonify({"output" : output})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", post =5000)
