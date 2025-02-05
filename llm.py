@@ -6,7 +6,7 @@ class Llm:
         pass
 
 
-    def response(prompt):
+    def response(self, prompt):
                 
         message = [
                 {"role" : "system" , "content" : "you are helpful assistance provide good answer based on  prompt language"},
