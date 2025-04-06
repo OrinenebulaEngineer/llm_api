@@ -29,7 +29,7 @@ def run_command():
     prompt = data.get("prompt")
 
     llm =  Llm()
-    llm_response = llm.response(prompt)
+    llm_response = llm.vllm_response(prompt)
     
     return jsonify({"output" : llm_response})
 
