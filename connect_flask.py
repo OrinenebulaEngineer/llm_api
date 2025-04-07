@@ -102,19 +102,20 @@ class Llm:
 @app.route('/run_command', methods=['POST'])
 def run_command():
     data = request.json
-    prompt = data.get("prompt")
+    prompt = data.get("prompt","")
+    return jsonify({"response": f"You said: {prompt}"})
     
 
-    llm = Llm()
-    llm_response = llm.vllm_inference(prompt)
+    # llm = Llm()
+    # llm_response = llm.vllm_inference(prompt)
 
-    if llm_response:
-        # Assuming the response contains a "choices" field with the output
-        output = llm_response.get("choices", [{}])[0].get("message", {}).get("content", "No content")
-    else:
-        output = "Error: Unable to get response from VLLM server."
+    # if llm_response:
+    #     # Assuming the response contains a "choices" field with the output
+    #     output = llm_response.get("choices", [{}])[0].get("message", {}).get("content", "No content")
+    # else:
+    #     output = "Error: Unable to get response from VLLM server."
 
-    return jsonify({"output": output})
+    # return jsonify({"output": output})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
