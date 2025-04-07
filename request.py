@@ -7,9 +7,9 @@ def get_user_input():
 
 def send_request(prompt):
     """Send a POST request to the Flask server with the given prompt."""
-    url = "http://172.20.253.8:5000/run_command"
+    
     payload = {"prompt":prompt}
-
+    url = "http://172.20.253.8:5000/run_command"
     response = requests.post(url, json=payload, auth=HTTPBasicAuth('mhbokaei', "bokaei@37"))
 
     #check if the response was successful
@@ -54,6 +54,6 @@ if __name__ == "__main__":
 
 
 
-#Define the URL and the payload
-url = "http://172.20.253.8:5000/run_command"
+# #Define the URL and the payload
+# url = "http://172.20.253.8:5000/run_command"
 

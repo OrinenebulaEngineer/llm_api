@@ -67,15 +67,15 @@ def connect_to_server(server_ip, username, password, command):
 
 class Llm:
     def __init__(self):
-        self.vllm_url = "http://localhost:8000/generate"  
+        self.vllm_url = "http://127.0.0.1:5000"  
 
-    def vllm_inference(self, prompt):
+    def vllm_inference(self, user_message):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
         model = "google/gemma-2-9b-it"
 
         payload = {
             "model": model,
-            "messages": [{"role": "user", "content": prompt}],  
+            "messages": [{"role": "user", "content": user_message}],  
             "max_tokens": 500,
         }
 

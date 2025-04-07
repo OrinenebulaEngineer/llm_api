@@ -3,10 +3,11 @@ import requests
 
 class Llm:
     def __init__(self):
-        self.model = LLM(model="google/gemma-2-9b-it")  
+        self.model = LLM(model="google/gemma-2-9b-it") 
+        self.vllm_url =  "http://127.0.0.1:5000" 
     
-    def __init__(self):
-        self.vllm_url =  "http://127.0.0.1:5000"  
+    
+          
 
     def vllm_response(self, prompt):
         response = requests.post(f"{self.vllm_url}/generate", json={"prompt": prompt})
