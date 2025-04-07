@@ -72,7 +72,7 @@ class Llm:
     def vllm_inference(self, user_message):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
         model = "google/gemma-2-9b-it"
-        print("hi im in vllm inference")
+        # print("hi im in vllm inference")
         payload = {
             "model": model,
             "messages": [{"role": "user", "content": user_message}],  
@@ -86,7 +86,7 @@ class Llm:
                 headers={"Content-Type": "application/json"},
                 data=json.dumps(payload)
             )
-
+            print("response")
             # Check if the request was successful
             if response.status_code == 200:
                 response_data = response.json()
@@ -96,7 +96,7 @@ class Llm:
                 print(f"Error in response data: {response.status_code} - {response.text}")
                 return None
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error in secnde: {e}")
             return None
 
 @app.route('/run_command', methods=['POST'])
