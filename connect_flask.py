@@ -67,7 +67,7 @@ def connect_to_server(server_ip, username, password, command):
 
 class Llm:
     def __init__(self):
-        self.vllm_url = "http://127.0.0.1:8000/run_command"  
+        self.vllm_url = "http://127.0.0.1:8000"  
 
     def vllm_inference(self, user_message):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
