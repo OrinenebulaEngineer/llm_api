@@ -69,13 +69,13 @@ class Llm:
     def __init__(self):
         self.vllm_url = "http://localhost:8000/v1/chat/completions"  
 
-    def vllm_inference(self, user_message):
+    def vllm_inference(self, prompt):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
         model = "google/gemma-2-9b-it"
         # print("hi im in vllm inference")
         payload = {
             "model": model,
-            "messages": [{"role": "user", "content": user_message}],  
+            "messages": prompt,  
             "max_tokens": 500,
         }
 
@@ -102,7 +102,7 @@ class Llm:
 @app.route('/run_command', methods=['POST'])
 def run_command():
     data = request.json
-    prompt = data.get("prompt","")
+    prompt = data.get("prompt")
     # return jsonify({"response": f"You said: {prompt}"})
     
 
