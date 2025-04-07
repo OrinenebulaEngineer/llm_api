@@ -76,7 +76,7 @@ class Llm:
         payload = {
             "model": model,
             "messages": prompt,  
-            "max_tokens": 500,
+            "max_tokens": 2000,
         }
 
         try:
