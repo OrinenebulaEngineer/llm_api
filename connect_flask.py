@@ -90,10 +90,10 @@ class Llm:
             # Check if the request was successful
             if response.status_code == 200:
                 response_data = response.json()
-                print(response_data)
+                print("status code is 200")
                 return response_data
             else:
-                print(f"Error: {response.status_code} - {response.text}")
+                print(f"Error in response data: {response.status_code} - {response.text}")
                 return None
         except Exception as e:
             print(f"Error: {e}")
