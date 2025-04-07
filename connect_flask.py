@@ -67,7 +67,7 @@ def connect_to_server(server_ip, username, password, command):
 
 class Llm:
     def __init__(self):
-        self.vllm_url = "http://127.0.0.1:8000"  
+        self.vllm_url = "http://localhost:8000/v1/chat/completions"  
 
     def vllm_inference(self, user_message):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
@@ -96,7 +96,7 @@ class Llm:
                 print(f"Error in response data: {response.status_code} - {response.text}")
                 return None
         except Exception as e:
-            print(f"Error in secnde: {e}")
+            print(f"Error : {e}")
             return None
 
 @app.route('/run_command', methods=['POST'])
