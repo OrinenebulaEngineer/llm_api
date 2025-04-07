@@ -67,12 +67,12 @@ def connect_to_server(server_ip, username, password, command):
 
 class Llm:
     def __init__(self):
-        self.vllm_url = "http://127.0.0.1:5000"  
+        self.vllm_url = "http://127.0.0.1:5000/run_command"  
 
     def vllm_inference(self, user_message):
         # Assuming config.OPEN_MODELS is a dictionary that maps model IDs to model names
         model = "google/gemma-2-9b-it"
-
+        print("hi im in vllm inference")
         payload = {
             "model": model,
             "messages": [{"role": "user", "content": user_message}],  
@@ -90,6 +90,7 @@ class Llm:
             # Check if the request was successful
             if response.status_code == 200:
                 response_data = response.json()
+                print(response_data)
                 return response_data
             else:
                 print(f"Error: {response.status_code} - {response.text}")
