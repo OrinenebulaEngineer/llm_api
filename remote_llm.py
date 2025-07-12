@@ -4,7 +4,7 @@ from transformers import pipeline
 # بارگذاری مدل روی GPU
 device = 0 if torch.cuda.is_available() else -1
 
-pipe = pipeline("text-generation", model="google/gemma-2-9b-it", trust_remote_code=True, device=device)
+pipe = pipeline("text-generation", model="OrionStarAI/Orion-14B-Base", trust_remote_code=True, device=device)
 
 # نمایش وضعیت حافظه GPU
 if device >= 0:
