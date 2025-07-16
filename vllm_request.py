@@ -5,7 +5,7 @@ import time
 class Llm:
     def __init__(self):
         # self.vllm_url = "http://185.103.84.24:80/v1/chat/completions"
-        self.vllm_url = "http://'0.0.0.0':8000/v1/chat/completions"
+        self.vllm_url = "http://0.0.0.0:8000/v1/chat/completions"
 
     
         
